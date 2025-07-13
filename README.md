@@ -13,11 +13,11 @@ This is a multi-layered blog platform built with ASP.NET Core MVC. It supports w
 
 ## Project Structure
 
-- `EntityLayer/` – Entity models
-- `DataAccessLayer/` – EF Core repositories
-- `BusinessLayer/` – Business logic and validators
-- `StajBlogSitesi/` – ASP.NET Core MVC frontend (UI + Controllers)
-- `docs/` – Project documentation (`DOCUMENTATION.pdf`)
+- `EntityLayer/` â€“ Entity models
+- `DataAccessLayer/` â€“ EF Core repositories
+- `BusinessLayer/` â€“ Business logic and validators
+- `StajBlogSitesi/` â€“ ASP.NET Core MVC frontend (UI + Controllers)
+- `docs/` â€“ Project documentation (`DOCUMENTATION.pdf`)
 
 ## Requirements
 
@@ -28,9 +28,10 @@ This is a multi-layered blog platform built with ASP.NET Core MVC. It supports w
 ## Getting Started
 
 1. **Clone the Repository**
+   ```bash
    git clone https://github.com/your-username/StajBlogSitesi.git
    cd StajBlogSitesi
-   
+   ```
 
 2. **Open in Visual Studio**
    - Open the solution file: `StajBlogSitesi/StajBlogSitesi.sln`
@@ -40,11 +41,15 @@ This is a multi-layered blog platform built with ASP.NET Core MVC. It supports w
 
 4. **Apply Migrations**
    If migrations already exist:
+   ```bash
    dotnet ef database update
+   ```
 
    If no migration exists yet:
+   ```bash
    dotnet ef migrations add InitialCreate
    dotnet ef database update
+   ```
 
 5. **Mailtrap Setup**
    - In `RegisterController.cs`, update the SMTP username and password with your [Mailtrap](https://mailtrap.io) credentials.
@@ -52,7 +57,9 @@ This is a multi-layered blog platform built with ASP.NET Core MVC. It supports w
 6. **Run the Project**
    - From Visual Studio: Press `F5` or `Ctrl + F5`
    - From CLI:
+     ```bash
      dotnet run --project StajBlogSitesi
+     ```
 
 ## Contribution
 
@@ -64,4 +71,4 @@ Feel free to contribute! Submit a pull request or open an issue to collaborate.
 
 ## Author
 
-**Anýl Cem Elemir**
+**Anil Cem Elemir**
