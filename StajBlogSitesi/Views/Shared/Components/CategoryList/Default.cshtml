@@ -1,0 +1,16 @@
+﻿@model Dictionary<string, int>
+
+<div class="tech-btm">
+    <h4>Kategoriler</h4>
+    <ul class="list-group single">
+        @foreach (var category in Model)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                @category.Key
+                <span class="badge badge-primary badge-pill">
+                    @category.Value
+                </span>
+            </li>
+        }
+    </ul>
+</div>

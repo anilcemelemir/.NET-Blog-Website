@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div>
+    <p><a href="Category">Go to Table</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<button id="deneme">DenemeButon</button>
+
+<script>
+    $(document).ready(function () {
+        $("#deneme").click(function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Passwords do not match!',
+            });
+        });
+    });
+    
+</script>

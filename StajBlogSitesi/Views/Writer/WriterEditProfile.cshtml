@@ -1,0 +1,52 @@
+﻿@model EntityLayer.Concrete.Writer
+
+@{
+    ViewData["Title"] = "WriterEditProfile";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+@using (Html.BeginForm("WriterEditProfile", "Writer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yazar Profil Bilgileri Düzenleme</h4>
+                <br />
+                @Html.HiddenFor(x => x.WriterID, new { @class = "form-control" })
+                <form class="forms-sample">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.WriterName, "Yazar Ad Soyadı", new { @class = "control-label" })
+                        @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control", placeholder = "Yazar Adı Soyadı" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.WriterMail, "Email", new { @class = "control-label" })
+                        <div class="input-group col-xs-12">
+                            @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control", @readonly = "true" })
+                        </div>
+                        <br />
+                    </div>
+                    <div class="form-group">
+                        <label>Yazar Resmi</label>
+                        <input type="file" name="file" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-gradient-primary" type="button">Yükle</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Hakkımda</label>
+                        @Html.TextAreaFor(x => x.WriterAbout, 10, 3, new { @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
+                    <button class="btn btn-light">İptal Et</button>
+                    <a href="@Url.Action("ChangePassword", "Writer")" class="btn btn-facebook"> Şifre Değiştir</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+}
+

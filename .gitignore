@@ -1,0 +1,74 @@
+## Build results
+bin/
+obj/
+
+## User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Mono Auto Generated Files
+mono_crash.*
+
+## Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+## VS Code
+.vscode/
+
+## Rider
+.idea/
+
+## Visual Studio
+.vs/
+*.dbmdl
+*.bak
+*.log
+*.pdb
+*.cache
+*.pidb
+*.svclog
+*.sdf
+*.sqlite
+*.suo
+*.user
+*.sln.docstates
+
+# ASP.NET Core
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Entity Framework Migrations snapshot backups (optional)
+*MigrationsSnapshot.cs
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# DotCover
+.idea/.idea.DotSettings
+.idea/.idea.DotSettings.user
+
+# Logs
+logs/
+*.log
+
+# Publish output
+publish/
+*.publish.xml
+
+# Others
+*.swp
+*.tmp
+*.bak
+*.old
+*.orig
+
+# dotenv
+.env
+.env.*

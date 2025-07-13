@@ -1,0 +1,76 @@
+﻿@model EntityLayer.Concrete.Writer
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<section class="main-content-w3layouts-agileits">
+
+    <!-- Kütüphaneler -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <div class="container">
+        <h3 class="tittle">Giriş Yap</h3>
+        <div class="row inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label for="exampleInputEmail1 mb-2">Email Adresi</label>
+                        @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control", @type = "email" })
+                        @Html.ValidationMessageFor(x => x.WriterMail, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1 mb-2">Şifre</label>
+                        @Html.PasswordFor(x => x.WriterPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.WriterPassword, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-check mb-2">
+                        <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Beni Hatırla</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary submit mb-4">Giriş Yap</button>
+                    <p><a href="/Register/Index"> Hesabınız yok mu?</a></p>
+}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        var loginError = @Html.Raw(Json.Serialize(ViewBag.LoginError));
+        if (loginError && loginError !== '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Giriş Başarısız',
+                text: loginError
+            });
+        }
+
+        var registerSuccess = @Html.Raw(Json.Serialize(TempData["RegisterSuccess"]));
+        if (registerSuccess === true) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Kayıt Başarılı',
+                text: 'Lütfen e-posta adresinize gelen onay linkine tıklayın.'
+            });
+        }
+
+        var confirmSuccess = @Html.Raw(Json.Serialize(TempData["Message"]));
+        if (confirmSuccess) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Email Onaylandı',
+                text: confirmSuccess
+            });
+        }
+    });
+</script>
+
+
+

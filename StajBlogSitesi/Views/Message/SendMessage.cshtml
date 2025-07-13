@@ -1,0 +1,34 @@
+﻿@model EntityLayer.Concrete.Message2
+
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<div class="container">
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+
+    <form method="post" action="/Message/SendMessage">
+        <div class="form-group">
+            <label for="searchUser">Alıcı İsmi:</label>
+            <input type="text" class="form-control" id="ReceiverName" name="ReceiverName" placeholder="Kullanıcı adı girin" required />
+        </div>
+        <div class="form-group">
+            <label for="subject">Mesaj Başlığı:</label>
+            <input type="text" class="form-control" id="Subject" name="Subject" placeholder="Mesaj Başlığı" required />
+            @Html.ValidationMessageFor(x => x.Subject, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label for="messageContent">Mesaj İçeriği:</label>
+            <textarea class="form-control" id="MessageDetails" name="MessageDetails" rows="4" required></textarea>
+            @Html.ValidationMessageFor(x => x.MessageDetails, "", new { @class = "text-danger" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Mesaj Gönder</button>
+    </form>
+</div>

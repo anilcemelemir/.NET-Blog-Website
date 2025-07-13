@@ -1,0 +1,83 @@
+﻿@model EntityLayer.Concrete.Writer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Kayıt Ol</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                @using (Html.BeginForm("Index", "Register", FormMethod.Post, new { id = "registerForm" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">Adınız Soyadınız</label>
+                            @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom02">E-Mail</label>
+                            @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterMail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1 mb-2">Şifre</label>
+                            @Html.PasswordFor(x => x.WriterPassword, new { @class = "form-control", id = "WriterPassword" })
+                            @Html.ValidationMessageFor(x => x.WriterPassword, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword2 mb-2">Şifreyi Onayla</label>
+                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
+                    <p>
+                        <a href="#">Kayıt ol tuşuna basarak, tüm şartları okuduğumu ve anladığımı kabul ediyorum.</a>
+                    </p>
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                }
+
+                <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                <script>
+                    $(document).ready(function () {
+                        // Formun submit olayını dinle
+                        $("#registerForm").on("submit", function (event) {
+                            var password = $("#WriterPassword").val();
+                            var confirmPassword = $("#confirmPassword").val();
+
+                            if (password !== confirmPassword) {
+                                event.preventDefault();  // Formun gönderilmesini engelle
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Haydaa...',
+                                    text: 'Şifreler eşleşmedi!',
+                                });
+                            }
+                        });
+
+                        // Kayıt başarılı olduğunda SweetAlert mesajı göstermek için
+                        var isSuccess = @Html.Raw(Json.Serialize(ViewBag.IsSuccess));
+                        if (isSuccess) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Kayıt Başarıyla Gerçekleşti',
+                                text: 'E-posta adresinize onay maili gönderildi!',
+                                timer: 4000,
+                                showConfirmButton: false
+                            });
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</section>
